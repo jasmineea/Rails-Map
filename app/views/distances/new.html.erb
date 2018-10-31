@@ -1,0 +1,20 @@
+<header><h1 class="display-4">Welcome to Maps!</h1>
+<p> Below is pre-seeded data for you to calculate, but feel free to use your own coordinates!</p>
+</header>
+
+<%= form_tag distances_path do %>
+  <fieldset class="form-group">
+  <%= label_tag 'from', 'From' %>
+  <%= select_tag 'from', options_from_collection_for_select(@places, :id, :name), class: "form-control" %>
+</fieldset>
+
+  <fieldset class="form-group">
+  <%= label_tag 'to', 'To' %>
+  <%= select_tag 'to', options_from_collection_for_select(@places, :id, :name), class: "form-control" %>
+</fieldset>
+
+  <%= submit_tag 'Go!', class: 'btn btn-primary' %>
+  <%= link_to 'Back', places_path %>
+  <h2>Try out your own end points <%= link_to 'here', new_place_path %></h2>
+  
+<% end %>

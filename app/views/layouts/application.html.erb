@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head_tags) %>
+
+  </head>
+<% flash.each do |name, msg| %>
+  <%= content_tag(:div, msg.html_safe, class: "alert alert-#{name}") %>
+<% end %>
+  <body>
+    <%= yield %>
+  </body>
+</html>
